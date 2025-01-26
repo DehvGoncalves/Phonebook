@@ -1,4 +1,5 @@
 using MeuSiteEmMVC.Data;
+using MeuSiteEmMVC.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace MeuSiteEmMVC
@@ -16,6 +17,10 @@ namespace MeuSiteEmMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+
+            //Mapeamento de Interfaces e Serviços
+            builder.Services.AddScoped<IContatoInterface, ContatoService>();
 
             var app = builder.Build();
 

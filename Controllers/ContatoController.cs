@@ -1,4 +1,7 @@
 ﻿using MeuSiteEmMVC.Data;
+using MeuSiteEmMVC.Dto.Contato;
+using MeuSiteEmMVC.Models;
+using MeuSiteEmMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,14 +11,59 @@ namespace MeuSiteEmMVC.Controllers
     {
         // Injeção de dependência para o contexto do banco de dados
         private readonly AppDbContext _context;
-        public ContatoController(AppDbContext context)
+        private readonly IContatoInterface _contato;
+        public ContatoController(AppDbContext context, IContatoInterface contato)
         {
             _context = context;
+            _contato = contato;
         }
         public async Task<IActionResult> Index()
         {
             var contatos = await _context.Contatos.ToListAsync();
             return View(contatos);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ExcluirConfirmacao(int? id)
+        {
+            var contato = await _contato.BuscarContatoPorId(id);
+            return View(contato); // Retorna a view com o contato
+        }
+
+
+        [HttpGet]
+        public IActionResult Editar()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Criar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Criar(string nome, string email, string telefone)
+        {
+            if (ModelState.IsValid)
+            {
+                var contato = new ContatoModel
+                {
+                    Nome = nome,
+                    Email = email,
+                    Telefone = telefone
+                };
+                _context.Contatos.Add(contato);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+       
     }
-}
+};

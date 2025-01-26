@@ -1,0 +1,41 @@
+﻿@using MeuSiteEmMVC.Models
+@model ContatoModel
+@{
+    ViewData["Title"] = "Cadastrar Contato";
+}
+
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <div class="card-body p-4">
+            <h2 class="text-center mb-4">Preencha os Dados</h2>
+
+            <form asp-action="Editar" asp-controller="Contato" method="post">
+
+                <div class="mb-3 text-start">
+                    <label class="form-label" asp-for="Nome"></label>
+                    <input type="text" class="form-control shadow-none" asp-for="Nome" placeholder="Digite o nome" />
+                </div>
+
+                <div class="mb-3 text-start">
+                    <label class="form-label" asp-for="Email"></label>
+                    <input type="email" class="form-control shadow-none" asp-for="Email" placeholder="Digite o email" />
+                </div>
+
+                <div class="mb-3 text-start">
+                    <label class="form-label" asp-for="Telefone"></label>
+                    <input type="tel" class="form-control shadow-none" asp-for="Telefone" placeholder="Digite o telefone" />
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg">Salvar</button>
+                </div>
+            </form>
+
+            <p class="text-center text-muted mt-4">
+                <a asp-action="Index" asp-controller="Contato" class="text-decoration-none">Voltar à Lista de Contatos</a>
+            </p>
+        </div>
+    </div>
+
+</div>

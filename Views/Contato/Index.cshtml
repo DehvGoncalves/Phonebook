@@ -5,35 +5,56 @@
     ViewData["Title"] = "Listagem de Contatos";
 }
 
-<h1>Listagem de Contatos</h1>
+<div class="text-center">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any()){
-          
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a asp-controller="Contato" asp-action="Criar">
+            <button type="button" class="btn btn-primary">Adicionar Contato +</button>
+        </a>
+    </div>
+    <br />
+
+    <h1>Listagem de Contatos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
                 @foreach (var contato in Model)
                 {
-                <tr>
-                    <td>@contato.Id</td>
-                    <td>@contato.Nome</td>
-                    <td>@contato.Telefone</td>
-                    <td>@contato.Email</td>
-                </tr>
+                    <tr>
+                        <td>@contato.Id</td>
+                        <td>@contato.Nome</td>
+                        <td>@contato.Telefone</td>
+                        <td>@contato.Email</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <a asp-action="Editar" asp-controller="Contato" asp-route-id="@contato.Id">
+                                    <button type="button" class="btn btn-warning">Editar</button>
+                                </a>
+                                <a asp-action="ExcluirConfirmacao" asp-controller="Contato" asp-route-id="@contato.Id">
+                                    <button type="button" class="btn btn-danger">Excluir</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
                 }
-        }
-        else {
-            <tr>
-                <td colspan="4">Nenhum contato encontrado</td>
-            </tr>
-
-        }
-    </tbody>
-</table>
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">Nenhum contato encontrado</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
