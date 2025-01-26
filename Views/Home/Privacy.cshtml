@@ -1,0 +1,22 @@
+﻿@model PrivacidadeModel
+@{
+
+    ViewData["Title"] = "Privacidade";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    Não coletamos dados pessoais em nosso aplicativo. Apenas utilizamos informações anônimas de uso para aprimorar sua experiência.
+    <br /><br />
+    Garantimos que seus dados não serão compartilhados com terceiros.
+    <br /><br />
+    <span style="color: #555;">
+        Aplicação criada em
+        <strong>@Model.Pais</strong>, idioma oficial
+        <strong>@Model.Idioma</strong>, no ano de
+        <strong>@Model.Ano</strong>, versão inicial
+        <strong>@Model.Versao</strong>.
+    </span>
+</p>
+
