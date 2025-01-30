@@ -65,5 +65,18 @@ namespace MeuSiteEmMVC.Controllers
             var contato = await _contato.BuscarContatoPorId(id);
             return View(contato); // Retorna a view com o contato
         }
+        public async Task<IActionResult> Excluir(int? id)
+        {
+            if (id == null)
+            {
+                TempData["MensagemErro"] = "ID do contato não fornecido.";
+                return RedirectToAction("Index");
+            }
+
+            var contatoExcluido = await _contato.ExcluirContato(id);
+            TempData["MensagemSucesso"] = $"Contato '{contatoExcluido.Nome}' (ID: {id}) excluído com sucesso!";
+            return RedirectToAction("Index");
+        }
     }
-};
+
+}

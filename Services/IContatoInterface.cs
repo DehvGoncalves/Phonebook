@@ -7,6 +7,7 @@ namespace MeuSiteEmMVC.Services
     {
         Task<ContatoModel> CriarContato(ContatoCriacaoDto contatoCriacaoDto);
         Task<ContatoModel> BuscarContatoPorId(int? Id);
+        Task<ContatoModel> ExcluirContato(int? id);
     }
 
 }
