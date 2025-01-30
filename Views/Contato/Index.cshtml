@@ -5,6 +5,20 @@
     ViewData["Title"] = "Listagem de Contatos";
 }
 
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-dark" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger text-dark" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
 <div class="text-center">
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
@@ -38,12 +52,22 @@
                         <td>@contato.Email</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <a asp-action="Editar" asp-controller="Contato" asp-route-id="@contato.Id">
+                                <a asp-action="Editar" asp-controller="Contato"
+                                   asp-route-id="@contato.Id"
+                                   asp-route-nome="@contato.Nome"
+                                   asp-route-email="@contato.Email"
+                                   asp-route-telefone="@contato.Telefone">
                                     <button type="button" class="btn btn-warning">Editar</button>
                                 </a>
-                                <a asp-action="ExcluirConfirmacao" asp-controller="Contato" asp-route-id="@contato.Id">
+
+                                <a asp-action="ExcluirConfirmacao" asp-controller="Contato"
+                                   asp-route-id="@contato.Id"
+                                   asp-route-nome="@contato.Nome"
+                                   asp-route-email="@contato.Email"
+                                   asp-route-telefone="@contato.Telefone">
                                     <button type="button" class="btn btn-danger">Excluir</button>
                                 </a>
+
                             </div>
                         </td>
                     </tr>

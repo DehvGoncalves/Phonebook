@@ -320,4 +320,6 @@ C:\projetosAcademicos\CofreContatos\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.W
 C:\projetosAcademicos\CofreContatos\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\projetosAcademicos\CofreContatos\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\projetosAcademicos\CofreContatos\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\projetosAcademicos\CofreContatos\bin\Debug\net6.0\AutoMapper.dll
+C:\projetosAcademicos\CofreContatos\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\projetosAcademicos\CofreContatos\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt

@@ -24,20 +24,6 @@ namespace MeuSiteEmMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ExcluirConfirmacao(int? id)
-        {
-            var contato = await _contato.BuscarContatoPorId(id);
-            return View(contato); // Retorna a view com o contato
-        }
-
-
-        [HttpGet]
-        public IActionResult Editar()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public IActionResult Criar()
         {
             return View();
@@ -56,14 +42,28 @@ namespace MeuSiteEmMVC.Controllers
                 };
                 _context.Contatos.Add(contato);
                 _context.SaveChanges();
+                TempData["MensagemSucesso"] = "Contato criado com sucesso!";
                 return RedirectToAction("Index");
             }
             else
             {
+                TempData["MensagemErro"] = "Erro ao criar contato!";
                 return View();
             }
 
         }
-       
+        
+        [HttpGet]
+        public IActionResult Editar()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ExcluirConfirmacao(int? id)
+        {
+            var contato = await _contato.BuscarContatoPorId(id);
+            return View(contato); // Retorna a view com o contato
+        }
     }
 };

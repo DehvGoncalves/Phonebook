@@ -22,6 +22,8 @@ namespace MeuSiteEmMVC
             //Mapeamento de Interfaces e Serviços
             builder.Services.AddScoped<IContatoInterface, ContatoService>();
 
+            builder.Services.AddAutoMapper(typeof(Program)); // Registra os profiles do AutoMapper baseados no assembly fornecido
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
