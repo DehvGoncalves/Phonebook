@@ -9,11 +9,18 @@
         <h3>Realmente deseja apagar o contato, @Model.Nome? </h3>
     </div>
     <br />
+   
     <div class="text-center">
-        <a asp-controller="Contato" asp-action="Excluir" class="btn btn-danger"><i class="bi bi-trash3"></i>Confirmar</a>
+        <a class="btn btn-danger" 
+        asp-controller="Contato" 
+        asp-action="Excluir" 
+        asp-route-id="@Model.Id">
+        <i class="bi bi-trash3"></i>Confirmar
+        </a>
 
-        <a class="btn btn-primary" asp-controller="Contato" asp-action="Index">Cancelar</a> 
+        <a class="btn btn-primary" asp-controller="Contato" asp-action="Index" asp-route-id="@Model.Id">Cancelar</a> 
     </div>
+
 </div>
 
 
